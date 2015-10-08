@@ -18,6 +18,4 @@ class Card
     self.deck.shuffle!
   end
 
-# need to generate the cards
-
 end
