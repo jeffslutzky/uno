@@ -47,14 +47,14 @@ class Person
   end
 
   def play
-    puts "Card played: #{@@last_card_played}"
+    puts "Card played: #{@@last_card_played}", ""
     display_hand
     puts "Type the number of the card you want to play, or 's' to draw a card and skip your turn."
-    puts "Type exit to end the game."  
+    # puts "Type exit to end the game."  
     choice = gets.chomp
     if choice == "s"
       draw_card
-    elsif choice == "exit"
+    # elsif choice == "exit"
       #exit
     elsif is_valid?(choice)
       choice = choice.to_i

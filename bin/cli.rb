@@ -29,7 +29,10 @@ while still_playing(player_1, player_2)
 	if still_playing(player_1, player_2)
 		player_2.play
 	end
-
 end
 
-puts "Game over!"
+if player_1.hand.length == 0
+	puts "#{player_1.name} is out of cards and wins the game!"
+else
+	puts "#{player_2.name} is out of cards and wins the game!"
+end
