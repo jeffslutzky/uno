@@ -1,4 +1,5 @@
 
+require 'colored'
 require_relative '../models/card.rb'
 require_relative '../models/deck.rb'
 require_relative '../models/person.rb'

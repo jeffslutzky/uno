@@ -38,10 +38,22 @@ class Person
     puts ""
     puts "* * * * * * * * * *"
     @hand.each_with_index do |card, index|
-      puts "(#{index+1}) --> #{card.to_s}"
+      print_color("(#{index+1}) --> #{card.to_s}", card)
     end 
     puts "* * * * * * * * * *"
     puts ""
+  end
+
+  def print_color(phrase, card)
+      if card.color == "red"
+       puts phrase.red
+      elsif card.color == "blue"
+        puts phrase.blue
+      elsif card.color == "green"
+        puts phrase.green
+      elsif card.color == "yellow"
+        puts phrase.yellow
+      end
   end
 
   def is_valid?(choice)
@@ -51,7 +63,9 @@ class Person
   end
 
   def play
-    puts "","Card played: #{@@last_card_played}", ""
+    puts ""
+    print_color("Card played: #{@@last_card_played}", @@last_card_played)
+    puts ""
     display_hand
     puts "Type the number of the card you want to play, or 's' to draw a card and skip your turn."
     # puts "Type exit to end the game."  
