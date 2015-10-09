@@ -2,13 +2,14 @@ require 'pry'
 
 class Person
 
-  attr_accessor :hand
+  attr_accessor :hand, :name
 
   @@game_deck = []
 
   @@last_card_played = nil
 
-  def initialize
+  def initialize(name)
+    @name = name
     @hand = []
     7.times do
       draw_card
@@ -32,7 +33,8 @@ class Person
     @hand.each_with_index do |card, index|
       puts "(#{index+1}) --> #{card.to_s}"
     end
-      puts "Type the number of the card you want to play, or 'skip' to draw a card and skip your turn."  
+      puts "Type the number of the card you want to play, or 'skip' to draw a card and skip your turn."
+      puts "Type exit to end the game."  
   end
 
   def is_valid?(card_played)
@@ -42,10 +44,12 @@ class Person
   def play
     puts "Last card played = #{@@last_card_played}"
     display_hand
-    # choice = gets.chomp
-    # if choice == skip
-      # draw_a_card
-    # elsif choice_is_valid(choice)
+    puts "Type the number of the card you want to play, or 'skip' to draw a card and skip your turn."
+    puts "Type exit to end the game."  
+    choice = gets.chomp
+    if choice == skip
+      draw_a_card
+    # elsif choice_is_valid?(choice)
       # change last_card_played to choice
       # pop card from @hand
     # else (choice is not valid)
