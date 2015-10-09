@@ -20,17 +20,14 @@ player_2 = Person.new(name)
 puts "Hello, #{player_2.name}!", ""
 
 def still_playing(player_1, player_2)
-	player_1.hand.length != 0 || player_2.hand.length != 0
+	player_1.hand.length != 0 && player_2.hand.length != 0
 end
 
-x = true
 
-while x
+while still_playing(player_1, player_2)
 	player_1.play
 	if still_playing(player_1, player_2)
 		player_2.play
-	else
-		x = false
 	end
 
 end
