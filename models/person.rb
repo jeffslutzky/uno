@@ -4,12 +4,28 @@ class Person
 
   attr_accessor :hand
 
+  @@game_deck = []
+
+  @@last_card_played = nil
+
   def initialize
     @hand = []
+    7.times do
+      draw_card
+    end
   end
 
-  def draw
-    # adds a card to @hand from remaining cards in Deck
+  def self.game_deck
+    @@game_deck
+  end
+
+  def self.game_deck=(deck)
+    @@game_deck = deck
+  end
+
+  def draw_card
+    drawn_card = @@game_deck.pop
+    @hand << drawn_card
   end
 
   def display_hand
