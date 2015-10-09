@@ -35,9 +35,13 @@ class Person
 
   def display_hand
     puts "#{@name}, it's your turn! Here's your hand:"
+    puts ""
+    puts "* * * * * * * * * *"
     @hand.each_with_index do |card, index|
       puts "(#{index+1}) --> #{card.to_s}"
     end 
+    puts "* * * * * * * * * *"
+    puts ""
   end
 
   def is_valid?(choice)
@@ -47,7 +51,7 @@ class Person
   end
 
   def play
-    puts "Card played: #{@@last_card_played}", ""
+    puts "","Card played: #{@@last_card_played}", ""
     display_hand
     puts "Type the number of the card you want to play, or 's' to draw a card and skip your turn."
     # puts "Type exit to end the game."  
