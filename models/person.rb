@@ -16,6 +16,10 @@ class Person
     end
   end
 
+  def self.last_card_played=(card)
+    @@last_card_played = card
+  end
+
   def self.game_deck
     @@game_deck
   end
@@ -30,30 +34,36 @@ class Person
   end
 
   def display_hand
+    puts "#{@name}, it's your turn! Here's your hand:"
     @hand.each_with_index do |card, index|
       puts "(#{index+1}) --> #{card.to_s}"
-    end
-      puts "Type the number of the card you want to play, or 'skip' to draw a card and skip your turn."
-      puts "Type exit to end the game."  
+    end 
   end
 
-  def is_valid?(card_played)
+  def is_valid?(choice)
+    choice = choice.to_i
+    card_played = @hand[choice - 1]
     @@last_card_played.color == card_played.color || @@last_card_played.number == card_played.number
   end
 
   def play
-    puts "Last card played = #{@@last_card_played}"
+    puts "Card played: #{@@last_card_played}"
     display_hand
-    puts "Type the number of the card you want to play, or 'skip' to draw a card and skip your turn."
+    puts "Type the number of the card you want to play, or 's' to draw a card and skip your turn."
     puts "Type exit to end the game."  
     choice = gets.chomp
-    if choice == skip
-      draw_a_card
-    # elsif choice_is_valid?(choice)
-      # change last_card_played to choice
-      # pop card from @hand
-    # else (choice is not valid)
-      # play (loop back to beginning of method)
+    if choice == "s"
+      draw_card
+    elsif choice == "exit"
+      #exit
+    elsif is_valid?(choice)
+      choice = choice.to_i
+      @@last_card_played = @hand[choice - 1]
+      @hand.delete_at(choice - 1)
+    else
+      puts "Sorry, that's not a valid play."
+      play
+    end
   end
 
 end
