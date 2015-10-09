@@ -15,8 +15,8 @@ class Person
   def display_hand
     @hand.each_with_index do |card, index|
       puts "#{index+1}. #{card.to_s}"
-    end  
-    # prompt player to play a move: play a card, or draw card (a.k.a. skip)
+    end
+      puts "Type the number of the card you want to play, or 'skip' to draw a card and skip your turn."  
   end
 
   def is_valid?(card_played)
