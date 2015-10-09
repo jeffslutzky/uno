@@ -1,3 +1,5 @@
+require 'pry'
+
 class Person
 
   attr_accessor :hand
@@ -7,11 +9,13 @@ class Person
   end
 
   def draw
-    # adds a card to @hand from remaining cards in deck
+    # adds a card to @hand from remaining cards in Deck
   end
 
   def display_hand
-    # puts @hand in a numbered list
+    @hand.each_with_index do |card, index|
+      puts "#{index+1}. #{card.to_s}"
+    end  
     # prompt player to play a move: play a card, or draw card (a.k.a. skip)
   end
 

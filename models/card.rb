@@ -18,4 +18,9 @@ class Card
     self.deck.shuffle!
   end
 
+  def to_s
+    "#{@number}, #{@color}"
+  end
+
+
 end
