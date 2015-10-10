@@ -8,7 +8,7 @@ class Person
 
   @@last_card_played = nil
 
-  def initialize(name)
+  def initialize(name="Computer")
     @name = name
     @hand = []
     7.times do
@@ -18,6 +18,10 @@ class Person
 
   def self.last_card_played=(card)
     @@last_card_played = card
+  end
+
+  def self.last_card_played
+    @@last_card_played
   end
 
   def self.game_deck
@@ -35,9 +39,13 @@ class Person
 
   def display_hand
     puts "#{@name}, it's your turn! Here's your hand:"
+    puts ""
+    puts "* * * * * * * * * *"
     @hand.each_with_index do |card, index|
       puts "(#{index+1}) --> #{card.to_s}"
     end 
+    puts "* * * * * * * * * *"
+    puts ""
   end
 
   def is_valid?(choice)
@@ -47,14 +55,14 @@ class Person
   end
 
   def play
-    puts "Card played: #{@@last_card_played}"
+    puts "","Last card played: #{@@last_card_played}", ""
     display_hand
     puts "Type the number of the card you want to play, or 's' to draw a card and skip your turn."
-    puts "Type exit to end the game."  
+    # puts "Type exit to end the game."  
     choice = gets.chomp
     if choice == "s"
       draw_card
-    elsif choice == "exit"
+    # elsif choice == "exit"
       #exit
     elsif is_valid?(choice)
       choice = choice.to_i
