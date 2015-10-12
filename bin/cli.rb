@@ -5,6 +5,8 @@ require_relative '../models/card.rb'
 require_relative '../models/deck.rb'
 require_relative '../models/person.rb'
 require_relative '../models/computer_player.rb'
+require_relative '../controllers/persons/person_controller.rb'
+require_relative '../controllers/computer/computer_controller.rb'
 
 Deck.new
 Person.game_deck = Card.deck.shuffle
@@ -23,11 +25,12 @@ def still_playing(player_1, computer)
   player_1.hand.length != 0 && computer.hand.length != 0
 end
 
-
 while still_playing(player_1, computer)
-  player_1.play
+  controller = PersonController.new
+  controller.play(player_1) # player_1.play
   if still_playing(player_1, computer)
-    computer.play
+    controller = ComputerController.new
+    controller.play(computer)
   end
 end
 
