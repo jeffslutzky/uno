@@ -1,4 +1,3 @@
-crequire 'pry'
 class Computer < Person
 
   attr_accessor :person
@@ -17,7 +16,8 @@ class Computer < Person
   end
 
   def play
-    puts "Last card played: #{person.class.last_card_played}"
+
+    # puts "Last card played: #{person.class.last_card_played}"
     puts "It's the computer's turn!"
 
     possibilities = @hand.find_all do |card|
@@ -28,7 +28,9 @@ class Computer < Person
       card = possibilities[rand(0..(possibilities.length-1))]
       person.class.last_card_played = card
       @hand.delete(card)
-      puts "The computer played #{card}"
+      print "The computer played: "
+        print_color("#{person.class.last_card_played}", person.class.last_card_played)
+      
     else
       puts "The computer had to draw a card and skip their turn."
       draw_card
