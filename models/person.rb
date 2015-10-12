@@ -64,7 +64,8 @@ class Person
 
   def play
     puts ""
-    print_color("Card played: #{@@last_card_played}", @@last_card_played)
+    print "Card played: "
+    print_color("#{@@last_card_played}", @@last_card_played)
     puts ""
     display_hand
     puts "Type the number of the card you want to play, or 's' to draw a card and skip your turn."
