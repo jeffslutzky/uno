@@ -1,4 +1,4 @@
-cd ..require 'pry'
+crequire 'pry'
 class Computer < Person
 
   attr_accessor :person
