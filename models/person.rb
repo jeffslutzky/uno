@@ -8,7 +8,7 @@ class Person
 
   @@last_card_played = nil
 
-  def initialize(name)
+  def initialize(name="Computer")
     @name = name
     @hand = []
     7.times do
@@ -18,6 +18,10 @@ class Person
 
   def self.last_card_played=(card)
     @@last_card_played = card
+  end
+
+  def self.last_card_played
+    @@last_card_played
   end
 
   def self.game_deck
